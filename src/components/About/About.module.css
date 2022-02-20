@@ -1,0 +1,26 @@
+.wrap {
+  margin: 30px auto;
+  padding: 5px 15px;
+  border-radius: 10px;
+  box-shadow: -5px 5px 4px #999999;
+  width: 270px;
+  background: #cfe8fc;
+}
+
+.err {
+  color: red;
+  text-align: center;
+}
+
+.link {
+  text-decoration: none;
+  color: #000;
+}
+
+.prelouder {
+  text-align: center;
+}
+
+.list {
+  margin-left: 25px;
+}

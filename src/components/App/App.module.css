@@ -1,0 +1,29 @@
+body {
+	padding-top: 10px;
+}
+
+.sidebar {
+	margin: 10px auto;
+  padding: 15px 15px;
+  width: 300px;
+}
+
+.sidebar nav a {
+	text-decoration: none;
+	color: #000;
+	font-family: sans-serif;
+	font-size: 16px;
+	padding: 10px;
+}
+
+.menu {
+	background-color: #1486d1;
+	width: 300px;
+	border-radius: 10px;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+a:focus {
+  background-color: #cfe8fc;
+}
