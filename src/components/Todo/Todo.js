@@ -5,33 +5,9 @@ import Footer from '../Footer/Footer';
 import styles from './Todo.module.css';
 
 function Todo() {
-  const [items, setItems] = useState([
-      {
-        value: 'Поработать',
-        isDone: false,
-        id: 1
-      },
-      {
-        value: 'Приготовить обед',
-        isDone: true,
-        id: 2
-      },
-      {
-        value: 'Выполнить тренировку',
-        isDone: true,
-        id: 3
-      }
-  ]);
+  const [items, setItems] = useState([]);
 
-  const [count, setCount] = useState(3);
-
-  useEffect(() => {
-    console.log('компонент создан');
-  }, []);
-
-  useEffect(() => {
-    console.log('компонент обновлен');
-  }, [count]);
+  const [count, setCount] = useState(0);
 
   const onClickDone = id => {
     const newItemList = items.map(item => {

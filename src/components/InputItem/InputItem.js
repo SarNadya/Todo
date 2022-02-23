@@ -12,7 +12,9 @@ class InputItem extends React.Component {
   };
 
   clickButton = () => {
-    if (this.state.inputValue !== '') {
+    //проверка поля ввода на кириллицу и цифры
+    const inputValid = /^[а-яА-ЯёЁa0-9]/;
+    if (inputValid.test(this.state.inputValue)) {
       this.setState({
         inputValue: ''
       });
@@ -52,7 +54,7 @@ class InputItem extends React.Component {
 
 InputItem.propTypes = {
   addItem: PropTypes.func.isRequired,
-  value: PropTypes.string
+  inputValue: PropTypes.number
 };
 
 export default InputItem;
