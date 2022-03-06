@@ -45,7 +45,7 @@ function Todo() {
     return (
       <div className={styles.wrap}>
         <h1 className={styles.title}>Важные дела:</h1>
-        <InputItem addItem={addItem} />
+        <InputItem addItem={addItem} items={items}/>
         <ItemList items={items} onClickDone={onClickDone} deleteItem={deleteItem}/>
         <Footer count={count}/>
       </div>
