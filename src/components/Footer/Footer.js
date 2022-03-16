@@ -1,32 +1,21 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import ButtonGroup from '@mui/material/ButtonGroup';
 import PropTypes from 'prop-types';
 
-const buttons = [
-  <Button key="all">Все</Button>,
-  <Button key="active">Активные</Button>,
-  <Button key="completed">Выполненные</Button>,
-];
-
-const Footer = ({count}) => (
+const Footer = ({count, countActive, countCompleted, filterCompleted, filterActive}) => (
   <Box
       sx={{
-        width: 250,
+        width: 450,
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'stretch',
-        '& > *': {
-          m: 1.2,
-        }
+        justifyContent: 'spaceBetween',
+        alignItems: 'stretch'
       }}
     >
-      <div>Дел осталось: {count} </div>
-      <ButtonGroup size="small" aria-label="small button group">
-        {buttons}
-      </ButtonGroup>
-    </Box>
+    <Button key="completed" onClick={() => filterCompleted()}> Завершенные {countCompleted} </Button>
+    <Button key="active" onClick={() => filterActive()}> Незавершенные {countActive} </Button>
+    <Button key="all">Все {count}</Button>
+  </Box>
 );
 
 Footer.propTypes = {

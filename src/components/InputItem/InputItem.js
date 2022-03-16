@@ -43,6 +43,16 @@ class InputItem extends React.Component {
     }
   };
 
+  //добавляем задачу по нажатию кнопки 'Enter'
+  pressadd = event => {
+    if (event.key === 'Enter') {
+      this.props.addItem(this.state.inputValue);
+      this.setState({
+        inputValue: ''
+      })
+    }
+  };
+
   render() {
     return (
       <Box className={styles.button}
@@ -55,10 +65,12 @@ class InputItem extends React.Component {
           value={this.state.inputValue}
           helperText={this.state.helperText}
           error={this.state.inputError}
+          pressadd={this.pressadd}
           onChange={event => this.setState({
             inputValue: event.target.value.toUpperCase(),
             inputError: false
           })}
+          onKeyPress={this.pressadd}
         />
         <ButtonAdd
           type="submit"
