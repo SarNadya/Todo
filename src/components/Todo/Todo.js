@@ -10,86 +10,121 @@ function Todo() {
   const [items, setItems] = useState(() => {
     const saved = localStorage.getItem('items');
     const initialValue = JSON.parse(saved);
-    return initialValue || '';
+    return initialValue || [];
   });
 
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(() => {
+    const savedCount = localStorage.getItem('count');
+    const initialCount = JSON.parse(savedCount);
+    return initialCount || 0;
+  });
 
-  const [countActive, setCountActive] = useState(0);
+  const [activeItems, setActiveItems] = useState(() => {
+    const savedActiveItems = localStorage.getItem('activeItems');
+    const initialActiveItems = JSON.parse(savedActiveItems);
+    return initialActiveItems || [];
+  })
 
-  const [countCompleted, setCountCompleted] = useState(0);
+  const [countActive, setCountActive] = useState(() => {
+    const savedCountActive = localStorage.getItem('countActive');
+    const initialCountActive = JSON.parse(savedCountActive);
+    return initialCountActive || 0;
+  });
+
+  const [completedItems, setCompletedItems] = useState(() => {
+    const savedCompletedItems = localStorage.getItem('completedItems');
+    const initialCompletedItems = JSON.parse(savedCompletedItems);
+    return initialCompletedItems || [];
+  })
+
+  const [countCompleted, setCountCompleted] = useState(() => {
+    const savedCountCompleted = localStorage.getItem('countCompleted');
+    const initialCountCompleted = JSON.parse(savedCountCompleted);
+    return initialCountCompleted || 0;
+  });
 
   //сохранение данных в хранилище браузера
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(items));
-  }, [items]);
+    localStorage.setItem('count', JSON.stringify(count));
+    localStorage.setItem('activeItems', JSON.stringify(activeItems));
+    localStorage.setItem('countActive', JSON.stringify(countActive));
+    localStorage.setItem('completedItems', JSON.stringify(completedItems));
+    localStorage.setItem('countCompleted', JSON.stringify(countCompleted));
+  }, [items, count, activeItems, countActive, completedItems, countCompleted]);
 
   const onClickDone = id => {
     const newItemList = items.map(item => {
-      const newItem = {...item };
-
-      if (item.id === id) {
-        newItem.isDone = !item.isDone;
-          if (newItem.isDone === true) {
-            setCountCompleted(countCompleted + 1);
-            setCountActive(countActive - 1);
-          } else if (newItem.isDone === false) {
-            setCountCompleted(countCompleted - 1);
-            setCountActive(countActive + 1);
-          }
-      }
-
+      const newItem = { ...item };
+      if (item.id === id) { newItem.isDone = !item.isDone; } 
       return newItem;
     });
 
+    const activeItems = newItemList.filter(item => item.isDone === false);
+    const completedItems = newItemList.filter(item => item.isDone === true);
+
     setItems(newItemList);
+    setActiveItems(activeItems);
+    setCountActive(activeItems.length);
+    setCompletedItems(completedItems);
+    setCountCompleted(completedItems.length);
   };
 
   const addItem = value => {
-      const newItems = [
-          ...items,
-          {
-            value,
-            isDone: false,
-            id: count + 1
-          }
-      ];
-      setItems(newItems);
-      setCount(count + 1);
-      setCountActive(countActive + 1);
+    const newItems = [
+      ...items,
+      {
+        value,
+        isDone: false,
+        id: count + 1
+      }
+    ];
+    setItems(newItems);
+    setCount(count + 1);
+    setActiveItems(newItems);
+    setCountActive(countActive + 1);
   };
 
   const deleteItem = id => {
     const newItemList = items.filter(item => item.id !== id);
-    
-    setCount(count - 1);
-    // if (item.isDone === true) {
-    //   setCountCompleted(countCompleted - 1);
-    // };
-    
-    setCountActive(countActive - 1);
+    const activeItems = newItemList.filter(item => item.isDone === false);
+    const completedItems = newItemList.filter(item => item.isDone === true);
+
     setItems(newItemList);
+    setCount(count - 1);
+    setActiveItems(activeItems);
+    setCountActive(activeItems.length);
+    setCompletedItems(completedItems);
+    setCountCompleted(completedItems.length);
   };
 
   const filterCompleted = isDone => {
     const completedItems = items.filter(item => item.isDone === true);
     setItems(completedItems);
-  }
+  };
 
   const filterActive = isDone => {
     const activeItems = items.filter(item => item.isDone === false);
     setItems(activeItems);
-  }
+  };
 
-    return (
-      <div className={styles.wrap}>
-        <h1 className={styles.title}>Важные дела:</h1>
-        <InputItem addItem={addItem} items={items}/>
-        <ItemList items={items} onClickDone={onClickDone} deleteItem={deleteItem}/>
-        <Footer count={count} countActive={countActive} countCompleted={countCompleted}
-          filterCompleted={filterCompleted} filterActive={filterActive}/>
-      </div>
-    );
+  const onClickEdit = id => {
+    console.log('Hi!');
+    // changedItem.current.focus();
+    // document.getElementById(id).contentEditable = true;
+    // document.getElementById(id).focus();
+    // const changedItem = document.getElementById(id).textContent;
+  };
+
+  return (
+    <div className={styles.wrap}>
+      <h1 className={styles.title}>Важные дела:</h1>
+      <InputItem addItem={addItem} items={items} />
+      <ItemList items={items} onClickDone={onClickDone} deleteItem={deleteItem} onClickEdit={onClickEdit} />
+      <Footer count={count} countActive={countActive} countCompleted={countCompleted}
+        filterCompleted={filterCompleted} filterActive={filterActive} />
+    </div>
+  );
 }
 
 export default Todo;

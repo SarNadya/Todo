@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 class Item extends React.Component {
   render() {
-    const {value, isDone, onClickDone, id, deleteItem} = this.props;
+    const {value, isDone, onClickDone, id, deleteItem, onClickEdit} = this.props;
 
     return (
       <div className={styles.list} >
@@ -21,7 +21,8 @@ class Item extends React.Component {
             [styles.item]: true,
             [styles.done]: isDone
           })
-        }>
+        }
+        onDoubleClick={() => onClickEdit(id)}>
           {value}
         </span>
         <ButtonDelete deleteItem={deleteItem} id={id}/>
