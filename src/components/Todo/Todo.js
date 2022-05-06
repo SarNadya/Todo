@@ -43,6 +43,8 @@ function Todo() {
     return initialCountCompleted || 0;
   });
 
+  const [filteredItems, setFilteredItems] = useState(items);
+
   //сохранение данных в хранилище браузера
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(items));
@@ -52,6 +54,10 @@ function Todo() {
     localStorage.setItem('completedItems', JSON.stringify(completedItems));
     localStorage.setItem('countCompleted', JSON.stringify(countCompleted));
   }, [items, count, activeItems, countActive, completedItems, countCompleted]);
+
+  useEffect(() => {
+    filterAll();
+  }, [items]);
 
   const onClickDone = id => {
     const newItemList = items.map(item => {
@@ -98,33 +104,31 @@ function Todo() {
     setCountCompleted(completedItems.length);
   };
 
-  const filterCompleted = isDone => {
-    const completedItems = items.filter(item => item.isDone === true);
-    setItems(completedItems);
+  const filterCompleted = () => {
+    setFilteredItems(completedItems);
   };
 
-  const filterActive = isDone => {
-    const activeItems = items.filter(item => item.isDone === false);
-    setItems(activeItems);
+  const filterActive = () => {
+    setFilteredItems(activeItems);
+  };
+
+  const filterAll = () => {
+    setFilteredItems(items);
   };
 
   const onClickEdit = id => {
     console.log('Hi!');
-    // changedItem.current.focus();
-    // document.getElementById(id).contentEditable = true;
-    // document.getElementById(id).focus();
-    // const changedItem = document.getElementById(id).textContent;
   };
 
   return (
     <div className={styles.wrap}>
       <h1 className={styles.title}>Важные дела:</h1>
       <InputItem addItem={addItem} items={items} />
-      <ItemList items={items} onClickDone={onClickDone} deleteItem={deleteItem} onClickEdit={onClickEdit} />
+      <ItemList items={filteredItems} onClickDone={onClickDone} deleteItem={deleteItem} onClickEdit={onClickEdit} />
       <Footer count={count} countActive={countActive} countCompleted={countCompleted}
-        filterCompleted={filterCompleted} filterActive={filterActive} />
+        filterCompleted={filterCompleted} filterActive={filterActive} filterAll={filterAll}/>
     </div>
   );
 }
 
-export default Todo;
+export default Todo;  
