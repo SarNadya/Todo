@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ItemList from '../ItemList/ItemList';
 import InputItem from '../InputItem/InputItem';
-import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
 import styles from './Todo.module.css';
 
 function Todo() {
@@ -122,11 +122,10 @@ function Todo() {
 
   return (
     <div className={styles.wrap}>
-      <h1 className={styles.title}>Важные дела:</h1>
-      <InputItem addItem={addItem} items={items} />
-      <ItemList items={filteredItems} onClickDone={onClickDone} deleteItem={deleteItem} onClickEdit={onClickEdit} />
-      <Footer count={count} countActive={countActive} countCompleted={countCompleted}
+      <Header count={count} countActive={countActive} countCompleted={countCompleted}
         filterCompleted={filterCompleted} filterActive={filterActive} filterAll={filterAll}/>
+      <ItemList items={filteredItems} onClickDone={onClickDone} deleteItem={deleteItem} onClickEdit={onClickEdit} />
+      <InputItem addItem={addItem} items={items} />
     </div>
   );
 }

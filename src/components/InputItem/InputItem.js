@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import ButtonAdd from '../ButtonAdd/ButtonAdd';
 import styles from './InputItem.module.css';
 import PropTypes from 'prop-types';
+import { height } from '@mui/system';
 
 class InputItem extends React.Component {
   state = {
@@ -55,13 +56,16 @@ class InputItem extends React.Component {
 
   render() {
     return (
-      <Box className={styles.button}
-        sx={{width: 295}}
+      <Box className={styles.wrap}
+        sx={{
+            width: 636
+        }}
       >
-        <TextField fullWidth
+        <TextField className={styles.input}
           type="text"
-          label="Добавить задачу"
-          id="fullWidth"
+          label="Просто введите сюда название дела..."
+          id="outlined"
+          variant="outlined"
           value={this.state.inputValue}
           helperText={this.state.helperText}
           error={this.state.inputError}

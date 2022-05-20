@@ -1,4 +1,8 @@
-.list {
-  list-style-type: none;
-  padding-left: 0;
+.wrap {
+  overflow: auto;
+  height: 432px;
+  /* position: absolute;
+  width: 636px;
+  height: 432px;
+  top: 113px; */
 }

@@ -1,13 +1,10 @@
 .wrap {
+  position: absolute;
   margin: 30px auto;
   padding: 5px 15px;
   border-radius: 10px;
   box-shadow: -5px 5px 4px #999999;
-  width: 400px;
-  background: #cfe8fc;
-}
-
-.title {
-  font-family: sans-serif;
-  font-size: 20px;
+  width: 700px;
+  height: 644px;
+  background: #ffffff;
 }
