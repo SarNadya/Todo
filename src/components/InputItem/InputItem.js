@@ -15,8 +15,8 @@ class InputItem extends React.Component {
 
   clickButton = () => {
     this.setState({
-        inputValue: ''
-      });
+      inputValue: ''
+    });
 
     //проверка поля ввода на кириллицу и цифры
     const inputValid = /^[а-яА-ЯёЁa0-9]/;
@@ -30,7 +30,7 @@ class InputItem extends React.Component {
         helperText: 'Неверный ввод'
       });
     } else if (isHave) {
-        this.setState({
+      this.setState({
         inputError: true,
         helperText: 'Такая задача уже есть в вашем списке. Введите другое название'
       });
@@ -45,7 +45,7 @@ class InputItem extends React.Component {
   };
 
   //добавляем задачу по нажатию кнопки 'Enter'
-  pressadd = event => {
+  clickEnter = event => {
     if (event.key === 'Enter') {
       this.props.addItem(this.state.inputValue);
       this.setState({
@@ -58,7 +58,7 @@ class InputItem extends React.Component {
     return (
       <Box className={styles.wrap}
         sx={{
-            width: 636
+          width: 636
         }}
       >
         <TextField className={styles.input}
@@ -69,12 +69,12 @@ class InputItem extends React.Component {
           value={this.state.inputValue}
           helperText={this.state.helperText}
           error={this.state.inputError}
-          pressadd={this.pressadd}
+          clickEnter={this.clickEnter}
           onChange={event => this.setState({
             inputValue: event.target.value.toUpperCase(),
             inputError: false
           })}
-          onKeyPress={this.pressadd}
+          onKeyPress={this.clickEnter}
         />
         <ButtonAdd
           type="submit"

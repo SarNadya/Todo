@@ -3,18 +3,12 @@ import Item from '../Item/Item';
 import styles from './ItemList.module.css';
 import PropTypes from 'prop-types';
 import Grid from '@mui/material/Grid';
-import { BorderHorizontalOutlined } from '@material-ui/icons';
-// import startImg from './img/startImg.svg';
+import ImageStart from '../ImageStart/ImageStart';
 
 const ItemList = ({items, onClickDone, deleteItem, onClickEdit, changedItem}) => (
   <div className={styles.wrap}>
     { items.length === 0 ?
-      <div>
-        {/* <img src={startImg} alt='startImg'> </img> */}
-        <p> Вы еще не добавили ни одной задачи </p>
-        <p> Сделайте это прямо сейчас!</p>
-      </div> :
-      // <ul className={styles.list}>
+      <ImageStart/> :
       <Grid
         container
         direction="column"

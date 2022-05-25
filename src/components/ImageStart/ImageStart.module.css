@@ -1,0 +1,10 @@
+.wrap {
+    display: flex;
+    justify-content: center;
+    margin: 80px auto;
+}
+
+.img {
+    width: 321px;
+    height: 233px;
+}
