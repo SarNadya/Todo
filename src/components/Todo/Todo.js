@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ItemList from '../ItemList/ItemList';
 import InputItem from '../InputItem/InputItem';
 import Header from '../Header/Header';
+import Sort from '../Sort/Sort';
 import styles from './Todo.module.css';
 
 function Todo() {
@@ -44,6 +45,8 @@ function Todo() {
   });
 
   const [filteredItems, setFilteredItems] = useState(items);
+
+  const [selectedSort, setSelectedSort] = useState('');
 
   //сохранение данных в хранилище браузера
   useEffect(() => {
@@ -120,10 +123,26 @@ function Todo() {
     console.log('Hi!');
   };
 
+  const collatore = new Intl.Collator('ru-RU');
+
+  const sortItemsAlpha = (value) => {
+    setItems([...items].sort((a, b) => collatore.compare(a.value, b.value)));
+  };
+
+  const sortItemsDate = (id) => {
+    setItems([...items].sort((a, b) => a.id - b.id));
+  };
+
   return (
     <div className={styles.wrap}>
       <Header count={count} countActive={countActive} countCompleted={countCompleted}
         filterCompleted={filterCompleted} filterActive={filterActive} filterAll={filterAll}/>
+    { items.length !== 0 &&
+      <Sort
+        sortItemsAlpha={sortItemsAlpha}
+        sortItemsDate={sortItemsDate}
+      />
+    }
       <ItemList items={filteredItems} onClickDone={onClickDone} deleteItem={deleteItem} onClickEdit={onClickEdit} />
       <InputItem addItem={addItem} items={items} />
     </div>
