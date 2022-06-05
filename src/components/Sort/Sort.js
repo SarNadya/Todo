@@ -1,23 +1,29 @@
 import React from "react";
-import SortByAlphaIcon from '@mui/icons-material/SortByAlpha';
+import SortByAlphaOutlinedIcon from '@mui/icons-material/SortByAlphaOutlined';
 import ArrowDownwardSharpIcon from '@mui/icons-material/ArrowDownwardSharp';
+import styles from './Sort.module.css';
 
 const Sort = ({value, id, sortItemsAlpha, sortItemsDate}) => {
     
 
     return (
-        <div>
-            <p> Сортировать </p>
+    <div className={styles.wrap}>
+            <p> Сортировать: </p>
             <button
+                className={styles.button}
                 value={value}
                 onClick={() => sortItemsAlpha()}
+                title='в алфавитном порядке'
             >
-                <SortByAlphaIcon/>
+                <SortByAlphaOutlinedIcon/>
             </button>
 
             <button
+                className={styles.button}
                 id={id}
-                onClick={() => sortItemsDate()}>
+                onClick={() => sortItemsDate()}
+                title='по дате добавления'
+            >
                 <ArrowDownwardSharpIcon/>
             </button>
         </div>

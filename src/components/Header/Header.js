@@ -9,21 +9,17 @@ import styles from './Header.module.css';
 const Header = ({count, countActive, countCompleted, filterCompleted, filterActive, filterAll}) => (
   <Box
       sx={{
-        width: 600,
+        width: 650,
         mt: '2rem',
-        ml: '2rem',
-        display: 'flex',
-        justifyContent: 'spaceEvenly',
-        alignItems: 'flexEnd',
-        justifyContent: 'spaceAround'
+        ml: '2rem'
       }}
     >
     <h1 className={styles.title}> Список моих дел </h1>
-    <div>
-    <Button key="completed" onClick={() => filterCompleted()}> Завершенные {countCompleted} </Button>
-    <Button key="active" onClick={() => filterActive()}> Незавершенные {countActive} </Button>
-    <Button key="all" onClick={() => filterAll()}>Все {count}</Button>
-    </div>
+    <div className={styles.filterList}>
+    <Button size="small" className={styles.button} key="completed" onClick={() => filterCompleted()}> Завершенные <strong>{countCompleted}</strong> </Button>
+    <Button size="small" className={styles.button} key="active" onClick={() => filterActive()}> Незавершенные <strong>{countActive}</strong> </Button>
+    <Button size="small" className={styles.button} key="all" onClick={() => filterAll()}>Все <strong>{count}</strong></Button>
+    </div> 
   </Box>
 );
 

@@ -3,9 +3,20 @@
     font-weight: 700;
     font-size: 28px;
   }
+
+  .filterList {
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+  }
   
-  .title button {
+  .button {
     font-family: Roboto;
     font-weight: 400;
     font-size: 12px;
+  }
+
+  .button strong {
+    margin: 0 3px;
+    color: rgb(92, 92, 243);
   }

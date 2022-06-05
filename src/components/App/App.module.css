@@ -9,22 +9,27 @@ body {
 	width: 700px;
 }
 
-.sidebar nav a {
+.menu {
+	background-color: inherit;
+	/* width: 300px; */
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+}
+
+.link {
+	width: 103px;
 	text-decoration: none;
+	text-align: center;
 	color: #000;
 	font-family: sans-serif;
 	font-size: 16px;
 	padding: 10px;
 }
 
-.menu {
-	background-color: #1486d1;
-	width: 300px;
-	border-radius: 10px;
-	display: flex;
-	justify-content: space-evenly;
-}
-
-a:focus {
-	background-color: #cfe8fc;
+.active {
+	background-color: #356EFF;
+	box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+	border-radius: 37px;
+	color: #fff;
 }
