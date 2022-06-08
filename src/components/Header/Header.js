@@ -3,8 +3,6 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 import styles from './Header.module.css';
-import '@fontsource/roboto/700.css';
-import '@fontsource/roboto/400.css';
 
 const Header = ({count, countActive, countCompleted, filterCompleted, filterActive, filterAll}) => (
   <Box
