@@ -1,10 +1,65 @@
 .wrap {
-  margin: 30px auto;
+  position: absolute;
+  margin: 20px auto;
   padding: 5px 15px;
+  /* border-radius: 10px;
+  box-shadow: -5px 5px 4px #999999; */
+  width: 700px;
+  height: 644px;
+  /* background: #ffffff; */
+  font-family: 'Roboto';
+}
+
+.info {
+  display: flex;
+  height: 200px;
   border-radius: 10px;
-  box-shadow: -5px 5px 4px #999999;
-  width: 270px;
-  background: #cfe8fc;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+  background: #ffffff;
+  padding-right: 6px;
+}
+
+.avatar {
+  margin: 10px 20px 8px 9px;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  color: #999999;
+  margin-right: 120px;
+}
+
+.name {
+  font-size: 28px;
+  color: #000;
+  margin: 12px 0;
+}
+
+.bio {
+  margin-bottom: 8px;
+}
+
+.contact_link {
+  display: flex;
+  align-items: center;
+  line-height: 25px;
+}
+
+.socialNetwork {
+  display: flex;
+  align-items: flex-end;
+}
+
+.logo {
+  padding: 6px;
+}
+
+.projects {
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+  background: #ffffff;
 }
 
 .err {
@@ -12,15 +67,76 @@
   text-align: center;
 }
 
+.prelouder {
+  font-size: 16px;
+  text-align: left;
+  padding: 18px;
+}
+
 .link {
   text-decoration: none;
   color: #000;
+  font-size: 14px;
+  font-weight: 500;
 }
 
-.prelouder {
-  text-align: center;
+.repolist {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 0;
+  /* margin-left: 25px; */
 }
 
-.list {
-  margin-left: 25px;
+.repo {
+  border: 1px solid #CCCCCC;
+  border-radius: 10px;
+  height: 46px;
+  width: 636px;
+  margin: 8px auto;
+  padding: 6px 12px;
+}
+
+.repo_info {
+  display: flex;
+  margin: 0;
+  align-items: center;
+  color: #999999;
+  font-size: 12px;
+}
+
+.elem {
+  margin: 4px 5px;
+}
+
+.repo_info__null-icon {
+  margin-right: 5px;
+  height: 14px;
+  width: 14px;
+  background-color: #999999;
+  border-radius: 50%;
+}
+
+.repo_info__html-icon {
+  margin-right: 5px;
+  height: 14px;
+  width: 14px;
+  background: #E34C26;
+  border-radius: 50%;
+}
+
+.repo_info__css-icon {
+  margin-right: 5px;
+  height: 14px;
+  width: 14px;
+  background: #563D7C;
+  border-radius: 50%;
+}
+
+.repo_info__javascript-icon {
+  margin-right: 5px;
+  height: 14px;
+  width: 14px;
+  background: #F1E05A;
+  border-radius: 50%;
 }

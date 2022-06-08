@@ -1,9 +1,17 @@
 import React, {Component} from 'react';
 import styles from './About.module.css';
-import CardContent from '@mui/material/CardContent';
+import fork from './img/fork.jpg';
+import star from './img/star.jpg';
+import vk_logo from './img/vk_logo.jpg';
+import f_logo from './img/f_logo.jpg';
+import github_logo from './img/github_logo.jpg';
 import CircularProgress from '@mui/material/CircularProgress';
 import Avatar from '@mui/material/Avatar';
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import TelegramIcon from '@mui/icons-material/Telegram';
+
 import { Octokit } from'@octokit/rest';
+import { Link } from '@material-ui/core';
 
 const octokit = new Octokit();
 
@@ -23,8 +31,7 @@ class About extends Component {
 			this.setState({
 				repoList: data,
 				isLoading: false,
-				avatarUrl: data[0].owner.avatar_url,
-				login: data[0].owner.login
+				avatarUrl: data[0].owner.avatar_url
 			})
 		))
 		.catch(err => (
@@ -55,10 +62,10 @@ class About extends Component {
 	}
 
 	render() {
-		const { isLoading, repoList, requestError, error, avatarUrl, login, name, bio } = this.state;
+		const { isLoading, repoList, requestError, error, avatarUrl, name, bio } = this.state;
 
 		return (
-			<CardContent className={styles.wrap}>
+			<div className={styles.wrap}>
 				{requestError && (
 					<div className={styles.err}>
 						<div>{error.name}</div>
@@ -67,27 +74,79 @@ class About extends Component {
 				)}
 
 				{!requestError && (
-					<div>
-						<Avatar alt={repoList.username} src={avatarUrl} sx={{ width: 65, height: 65 }}/>
-						<h5> {name} ({login})</h5>
-						<div> {bio} </div>
+					<div className={styles.info}>
+						<div className={styles.avatar}>
+							<Avatar
+								variant='square'
+								alt={repoList.username}
+								src={avatarUrl}
+								sx={{ width: 144, height: 176, borderRadius: 3 }}
+							/>
+						</div>
+						<p className={styles.contacts}>
+							<h5 className={styles.name}> {name} </h5>
+							<div className={styles.bio}> {bio} </div>
+							<Link href='mailto: lutik.ne@gmail.com' color='inherit' className={styles.contact_link} title='Написать мне на почту'>
+								<AlternateEmailIcon fontSize='small'color='disabled' sx={{pr: 0.5}} />
+								lutik.ne@gmail.com
+							</Link>
+							<Link href='https://web.telegram.org/' color='inherit' className={styles.contact_link} title='Написать мне в Телеграм'>
+								<TelegramIcon fontSize='small'color='disabled' sx={{pr: 0.5}} />
+								+7 960 248 95 20
+							</Link>
+						</p>
+						<div className={styles.socialNetwork}>
+							<Link href='https://github.com/SarNadya' color='inherit' title='Мой GitHub'>
+								<img src={github_logo} alt='github_logo' className={styles.logo}/>
+							</Link>
+							<Link href='https://vk.com/sarnadya' color='inherit' title='Я в VK'>
+								<img src={vk_logo} alt='vk_logo' className={styles.logo}/>
+							</Link>
+							<Link href='https://www.facebook.com' color='inherit' title='Я в facebook'>
+								<img src={f_logo} alt='facebook_logo' className={styles.logo}/>
+							</Link>
+						</div>
 					</div>
 				)}
 
-				<h2 className={styles.prelouder}>
-					{isLoading && <CircularProgress disableShrink/>}
-					{!requestError && 'Мои репозитории:'}
-				</h2>
-				{!requestError && <ul className={styles.list}>
-					{repoList.map(repo => (
-						<li key={repo.id}>
-							<a href={repo.html_url} className={styles.link}>
-								{repo.name}
-							</a>
-						</li>
-					))}
-				</ul>}
-			</CardContent>
+				<div className={styles.projects}>
+					<h2 className={styles.prelouder}>
+						{isLoading && <CircularProgress disableShrink/>}
+						{!requestError && 'Репозитории на github.com'}
+					</h2>
+					{!requestError && <ul className={styles.repolist}>
+						{repoList.map(repo => (
+							<div className={styles.repo} key={repo.id}>
+								<a href={repo.html_url} className={styles.link}>
+									{repo.name}
+								</a>
+								<div className={styles.repo_info}>
+								<div className={styles[`repo_info__${repo.language}-icon`.toLowerCase()]}></div>
+									<p className={styles.elem}>
+										{repo.language}
+									</p>
+									<p className={styles.elem}>
+										<img src={star} alt='star' className={styles.star}/>
+									</p>
+									<p className={styles.elem}>
+										{repo.stargazers_count}
+									</p>
+									<p>
+										<img src={fork} alt='fork' className={styles.fork_img}/>
+									</p>
+									<p className={styles.elem}>
+										{repo.forks}
+									</p>
+									<p className={styles.elem}>
+										<span> Updated on </span>
+										{new Date(repo.updated_at).toLocaleString('eng', {day: 'numeric', month: 'long', year: 'numeric'})}
+									</p>
+								</div>
+							</div>
+						))}
+					</ul>}
+				</div>
+			</div>
 		);
 	}
 }
