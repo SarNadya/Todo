@@ -2,11 +2,8 @@
   position: absolute;
   margin: 20px auto;
   padding: 5px 15px;
-  /* border-radius: 10px;
-  box-shadow: -5px 5px 4px #999999; */
   width: 700px;
   height: 644px;
-  /* background: #ffffff; */
   font-family: 'Roboto';
 }
 
@@ -67,10 +64,25 @@
   text-align: center;
 }
 
-.prelouder {
+.title {
   font-size: 16px;
   text-align: left;
   padding: 18px;
+}
+
+.projects_list {
+  padding-bottom: 30px;
+}
+
+.project_link {
+  text-decoration: none;
+  color: #000;
+  line-height: 2;
+}
+
+.error_wrap {
+  text-align: center;
+  padding: 60px 0;
 }
 
 .link {
@@ -85,7 +97,6 @@
   display: flex;
   flex-direction: column-reverse;
   padding: 0;
-  /* margin-left: 25px; */
 }
 
 .repo {

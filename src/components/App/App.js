@@ -16,23 +16,23 @@ class App extends Component {
 			<Router>
 				<div className={styles.sidebar}>
 					<div className={styles.menu}>
-						<NavLink
+					<NavLink
 							to='/'
 							exact = 'true'
 							className={setActive}
 						>
-							Дела
+							Обо мне
 						</NavLink>
 						<NavLink
-							to='/about'
+							to='/todo'
 							className={setActive}
 						>
-							Обо мне
+							Дела
 						</NavLink>
 					</div>
 					<Routes className={styles.content}>
-						<Route exact = 'true' path='/' element={<Todo/>}/>
-						<Route path='/about' element={<About/>}/>
+						<Route exact = 'true' path='/' element={<About/>}/>
+						<Route path='/todo' element={<Todo/>}/>
 					</Routes>
 				</div>
 			</Router>
