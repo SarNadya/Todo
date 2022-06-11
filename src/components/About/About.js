@@ -6,6 +6,7 @@ import vk_logo from './img/vk_logo.jpg';
 import f_logo from './img/f_logo.jpg';
 import github_logo from './img/github_logo.jpg';
 import err_img from './img/err_img.jpg';
+import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import Avatar from '@mui/material/Avatar';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
@@ -70,67 +71,68 @@ class About extends Component {
 
 		return (
 			<div className={styles.wrap}>
-				{requestError && (
+				<div className={styles.info}>
+					{isLoading ? <Box sx={{height: 200, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+									<CircularProgress/>
+								</Box> : requestError ?
 					<div className={styles.err}>
 						<div>{error.name}</div>
 						<div>{error.message}</div>
-					</div>
-				)}
-
-				{!requestError && (
-					<div className={styles.info}>
-						<div className={styles.avatar}>
-							<Avatar
-								variant='square'
-								alt={repoList.username}
-								src={avatarUrl}
-								sx={{ width: 144, height: 176, borderRadius: 3 }}
-							/>
+					</div> :
+						<div className={styles.info_list}>
+							<div className={styles.avatar}>
+								<Avatar
+									variant='square'
+									alt={repoList.username}
+									src={avatarUrl}
+									sx={{ width: 144, height: 176, borderRadius: 3 }}
+								/>
+							</div>
+							<p className={styles.contacts}>
+								<h5 className={styles.name}> {name} </h5>
+								<div className={styles.bio}> {bio} </div>
+								<Link href='mailto: lutik.ne@gmail.com' color='inherit' className={styles.contact_link} title='Написать мне на почту'>
+									<AlternateEmailIcon fontSize='small'color='disabled' sx={{pr: 0.5}} />
+									lutik.ne@gmail.com
+								</Link>
+								<Link href='https://web.telegram.org/' color='inherit' className={styles.contact_link} title='Написать мне в Телеграм'>
+									<TelegramIcon fontSize='small'color='disabled' sx={{pr: 0.5}} />
+									+7 960 248 95 20
+								</Link>
+							</p>
+							<div className={styles.socialNetwork}>
+								<Link href='https://github.com/SarNadya' color='inherit' title='Мой GitHub'>
+									<img src={github_logo} alt='github_logo' className={styles.logo}/>
+								</Link>
+								<Link href='https://vk.com/sarnadya' color='inherit' title='Я в VK'>
+									<img src={vk_logo} alt='vk_logo' className={styles.logo}/>
+								</Link>
+								<Link href='https://www.facebook.com' color='inherit' title='Я в facebook'>
+									<img src={f_logo} alt='facebook_logo' className={styles.logo}/>
+								</Link>
+							</div>
 						</div>
-						<p className={styles.contacts}>
-							<h5 className={styles.name}> {name} </h5>
-							<div className={styles.bio}> {bio} </div>
-							<Link href='mailto: lutik.ne@gmail.com' color='inherit' className={styles.contact_link} title='Написать мне на почту'>
-								<AlternateEmailIcon fontSize='small'color='disabled' sx={{pr: 0.5}} />
-								lutik.ne@gmail.com
-							</Link>
-							<Link href='https://web.telegram.org/' color='inherit' className={styles.contact_link} title='Написать мне в Телеграм'>
-								<TelegramIcon fontSize='small'color='disabled' sx={{pr: 0.5}} />
-								+7 960 248 95 20
-							</Link>
-						</p>
-						<div className={styles.socialNetwork}>
-							<Link href='https://github.com/SarNadya' color='inherit' title='Мой GitHub'>
-								<img src={github_logo} alt='github_logo' className={styles.logo}/>
-							</Link>
-							<Link href='https://vk.com/sarnadya' color='inherit' title='Я в VK'>
-								<img src={vk_logo} alt='vk_logo' className={styles.logo}/>
-							</Link>
-							<Link href='https://www.facebook.com' color='inherit' title='Я в facebook'>
-								<img src={f_logo} alt='facebook_logo' className={styles.logo}/>
-							</Link>
-						</div>
-					</div>
-				)}
+					}
+				</div>
 
 				<div className={styles.projects}>
 					<h2 className={styles.title}>
 						Мои проекты:
 					</h2>
-						{isLoading ? <CircularProgress disableShrink/> :
 							<ul className={styles.projects_list}>
 								<li> <a href='https://sarnadya.github.io/Project.Axion/' className={styles.project_link}> Верстка сайта по макету в Figma </a></li>
 								<li> <a href='https://sarnadya.github.io/JS-Game/' className={styles.project_link}> Карточная игра "Найди баг" </a></li>
 								<li> <a href='https://github.com/SarNadya/todo' className={styles.project_link}> Приложение на React </a></li>
 							</ul>
-						}
 				</div>
 
 				<div className={styles.projects}>
 					<h2 className={styles.title}>
 						Репозитории на github.com
 					</h2>
-						{isLoading ? <CircularProgress disableShrink/> : requestError ?
+						{isLoading ? <Box sx={{height: 200, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+								<CircularProgress/>
+							</Box> : requestError ?
 							<div className={styles.error_wrap}>
 								<img src={err_img} alt='Error_image' className={styles.error_img}/>
 								<h3> Что-то пошло не так... </h3>
