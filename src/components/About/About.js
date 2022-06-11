@@ -20,19 +20,20 @@ class About extends Component {
 	state = {
 		isLoading: true,
 		repoList: [],
+		username: 'SarNadya',
 		requestError: false,
 		error: {}
 	}
 
 	componentDidMount() {
 		octokit.rest.repos.listForUser({
-			username: 'SarNadya'
+			username: this.state.username
 		})
 		.then(({ data }) => (
 			this.setState({
 				repoList: data,
 				isLoading: false,
-				avatarUrl: data[0].owner.avatar_url
+				requestError: false
 			})
 		))
 		.catch(err => (
@@ -44,13 +45,15 @@ class About extends Component {
 		));
 
 		octokit.rest.users.getByUsername({
-			username: 'SarNadya'
+			username: this.state.username
 		})
 		.then(({ data }) => (
 			this.setState({
 				isLoading: false,
+				requestError: false,
 				name: data.name,
-				bio: data.bio
+				bio: data.bio,
+				avatarUrl: data.avatar_url
 			})
 		))
 		.catch(err => (
@@ -132,7 +135,12 @@ class About extends Component {
 								<img src={err_img} alt='Error_image' className={styles.error_img}/>
 								<h3> Что-то пошло не так... </h3>
 								<p> Попробуйте <a href='.' className={styles.error_update}> загрузить </a> еще раз </p>
-							</div> :
+							</div> : repoList.length === 0 ?
+								<div className={styles.error_wrap}>
+									<img src={err_img} alt='Error_image' className={styles.error_img}/>
+									<h3> Репозитории отсутствуют </h3>
+									<p> Добавьте как минимум один репозиторий на <a href='https://github.com/' className={styles.error_update}> github.com </a> </p>
+								</div> :
 								<ul className={styles.repolist}>
 									{repoList.map(repo => (
 										<div className={styles.repo} key={repo.id}>
@@ -163,8 +171,7 @@ class About extends Component {
 											</div>
 										</div>
 									))}
-								</ul>
-						}
+								</ul>}
 				</div>
 			</div>
 		);
