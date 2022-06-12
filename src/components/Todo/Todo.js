@@ -46,8 +46,6 @@ function Todo() {
 
   const [filteredItems, setFilteredItems] = useState(items);
 
-  const [selectedSort, setSelectedSort] = useState('');
-
   //сохранение данных в хранилище браузера
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(items));
@@ -143,7 +141,7 @@ function Todo() {
         sortItemsDate={sortItemsDate}
       />
     }
-      <ItemList items={filteredItems} onClickDone={onClickDone} deleteItem={deleteItem} onClickEdit={onClickEdit} />
+      <ItemList items={items} filteredItems={filteredItems} onClickDone={onClickDone} deleteItem={deleteItem} onClickEdit={onClickEdit} />
       <InputItem addItem={addItem} items={items} />
     </div>
   );

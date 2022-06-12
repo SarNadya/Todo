@@ -4,7 +4,6 @@ import TextField from '@material-ui/core/TextField';
 import ButtonAdd from '../ButtonAdd/ButtonAdd';
 import styles from './InputItem.module.css';
 import PropTypes from 'prop-types';
-import { height } from '@mui/system';
 
 class InputItem extends React.Component {
   state = {
@@ -44,16 +43,6 @@ class InputItem extends React.Component {
     }
   };
 
-  //добавляем задачу по нажатию кнопки 'Enter'
-  clickEnter = event => {
-    if (event.key === 'Enter') {
-      this.props.addItem(this.state.inputValue);
-      this.setState({
-        inputValue: ''
-      })
-    }
-  };
-
   render() {
     return (
       <Box className={styles.wrap}
@@ -69,12 +58,14 @@ class InputItem extends React.Component {
           value={this.state.inputValue}
           helperText={this.state.helperText}
           error={this.state.inputError}
-          clickEnter={this.clickEnter}
           onChange={event => this.setState({
             inputValue: event.target.value.toUpperCase(),
             inputError: false
           })}
-          onKeyPress={this.clickEnter}
+          onKeyPress={event => {
+            if (event.key === 'Enter') {
+              this.clickButton()
+          }}}
         />
         <ButtonAdd
           type="submit"

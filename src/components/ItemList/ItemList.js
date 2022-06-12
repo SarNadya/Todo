@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Grid from '@mui/material/Grid';
 import ImageStart from '../ImageStart/ImageStart';
 
-const ItemList = ({items, onClickDone, deleteItem, onClickEdit, changedItem}) => (
+const ItemList = ({items, filteredItems, onClickDone, deleteItem, onClickEdit, changedItem}) => (
   <div className={styles.wrap}>
     { items.length === 0 ?
       <ImageStart/> :
@@ -15,7 +15,7 @@ const ItemList = ({items, onClickDone, deleteItem, onClickEdit, changedItem}) =>
         justifyContent="center"
         alignItems="stretch"
         >
-      {items.map(item =>
+      {filteredItems.map(item =>
         <Grid item
           border='1px solid #CCC'
           borderRadius='41px'
