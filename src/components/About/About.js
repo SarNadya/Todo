@@ -11,6 +11,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Avatar from '@mui/material/Avatar';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import TelegramIcon from '@mui/icons-material/Telegram';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 import { Octokit } from'@octokit/rest';
 import { Link } from '@material-ui/core';
@@ -23,7 +25,9 @@ class About extends Component {
 		repoList: [],
 		username: 'SarNadya',
 		requestError: false,
-		error: {}
+		error: {},
+		firstRepo: 0,
+		lastRepo: 3
 	}
 
 	componentDidMount() {
@@ -66,8 +70,22 @@ class About extends Component {
 		));
 	}
 
+	onClickNext = () => {
+		this.setState({
+			firstRepo: this.state.firstRepo + 3,
+			lastRepo: this.state.lastRepo + 3
+		});
+	};
+
+	onClickBack = () => {
+		this.setState({
+			firstRepo: this.state.firstRepo - 3,
+			lastRepo: this.state.lastRepo - 3
+		});
+	};
+
 	render() {
-		const { isLoading, repoList, requestError, error, avatarUrl, name, bio } = this.state;
+		const { isLoading, repoList, requestError, error, avatarUrl, name, bio, firstRepo, lastRepo } = this.state;
 
 		return (
 			<div className={styles.wrap}>
@@ -144,7 +162,7 @@ class About extends Component {
 									<p> Добавьте как минимум один репозиторий на <a href='https://github.com/' className={styles.error_update}> github.com </a> </p>
 								</div> :
 								<ul className={styles.repolist}>
-									{repoList.map(repo => (
+									{repoList.slice(firstRepo, lastRepo).map(repo => (
 										<div className={styles.repo} key={repo.id}>
 											<a href={repo.html_url} className={styles.link}>
 												{repo.name}
@@ -174,6 +192,27 @@ class About extends Component {
 										</div>
 									))}
 								</ul>}
+
+								{ repoList.length > 0 &&
+									<Stack direction="row" spacing={2} sx={{pb: 3, display: 'flex', justifyContent: 'center'}}>
+										<Button
+											variant="outlined"
+											disabled={firstRepo === 0}
+											sx={{borderRadius: 7, border: '1px solid #999999'}}
+											onClick={() => this.onClickBack()}
+										>
+											Назад
+										</Button>
+										<Button
+											variant="outlined"
+											disabled={repoList.length - lastRepo <= 0}
+											sx={{borderRadius: 7, border: '1px solid #999999'}}
+											onClick={() => this.onClickNext()}
+										>
+											Далее
+										</Button>
+									</Stack>
+								}
 				</div>
 			</div>
 		);
