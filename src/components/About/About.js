@@ -140,7 +140,7 @@ class About extends Component {
 							<ul className={styles.projects_list}>
 								<li> <a href='https://sarnadya.github.io/Project.Axion/' className={styles.project_link}> Верстка сайта по макету в Figma </a></li>
 								<li> <a href='https://sarnadya.github.io/JS-Game/' className={styles.project_link}> Карточная игра "Найди баг" </a></li>
-								<li> <a href='https://github.com/SarNadya/todo' className={styles.project_link}> Приложение на React </a></li>
+								<li> <a href='https://todo-beige-nine.vercel.app/' className={styles.project_link}> Приложение на React </a></li>
 							</ul>
 				</div>
 
