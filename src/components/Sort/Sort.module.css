@@ -5,10 +5,16 @@
 
 .button {
     border: none;
+    border-radius: 20px;
     background-color: inherit;
+    margin: 7px;
 }
 
 .button:hover {
     cursor: pointer;
-    background-color: rgb(235, 225, 212);
+}
+
+.button:focus {
+    background-color: #356EFF;
+    color: #fff;
 }

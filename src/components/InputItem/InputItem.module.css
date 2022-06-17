@@ -1,24 +1,11 @@
 .wrap {
   display: flex;
   height: 36px;
-  width: 110%;
-  padding: 0 10px;
+  padding: 0 10px 0 20px;
 }
 
 .input {
-  width: 77%;
+  width: 90%;
   border: 1px solid #CCCCCC;
   border-radius: 29px;
-}
-
-@media (max-width: 686px) {
-  .input {
-    width: 501px;
-  }
-}
-
-@media (max-width: 620px) {
-  .wrap {
-    width: 96%;
-  }
 }
