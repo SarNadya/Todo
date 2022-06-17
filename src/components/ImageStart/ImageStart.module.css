@@ -8,3 +8,17 @@
     width: 321px;
     height: 233px;
 }
+
+@media (max-width: 385px) {
+    .img {
+        width: 250px;
+        height: 194px;
+    }
+}
+
+@media (max-width: 320px) {
+    .img {
+        width: 209px;
+        height: 164px;
+    }
+}

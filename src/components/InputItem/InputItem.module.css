@@ -1,14 +1,24 @@
 .wrap {
-  position: absolute;
-  display: inline-flex;
+  display: flex;
   height: 36px;
-  left: 65px;
-  top: 568px;
+  width: 110%;
+  padding: 0 10px;
 }
 
 .input {
-  width: 592px;
+  width: 77%;
   border: 1px solid #CCCCCC;
   border-radius: 29px;
-  height: inheritт;
+}
+
+@media (max-width: 686px) {
+  .input {
+    width: 501px;
+  }
+}
+
+@media (max-width: 620px) {
+  .wrap {
+    width: 96%;
+  }
 }

@@ -106,7 +106,7 @@ class About extends Component {
 									sx={{ width: 144, height: 176, borderRadius: 3 }}
 								/>
 							</div>
-							<p className={styles.contacts}>
+							<div className={styles.contacts}>
 								<h5 className={styles.name}> {name} </h5>
 								<div className={styles.bio}> {bio} </div>
 								<Link href='mailto: lutik.ne@gmail.com' color='inherit' className={styles.contact_link} title='Написать мне на почту'>
@@ -117,7 +117,7 @@ class About extends Component {
 									<TelegramIcon fontSize='small'color='disabled' sx={{pr: 0.5}} />
 									+7 960 248 95 20
 								</Link>
-							</p>
+							</div>
 							<div className={styles.socialNetwork}>
 								<Link href='https://github.com/SarNadya' color='inherit' title='Мой GitHub'>
 									<img src={github_logo} alt='github_logo' className={styles.logo}/>
@@ -140,7 +140,7 @@ class About extends Component {
 							<ul className={styles.projects_list}>
 								<li> <a href='https://sarnadya.github.io/Project.Axion/' className={styles.project_link}> Верстка сайта по макету в Figma </a></li>
 								<li> <a href='https://sarnadya.github.io/JS-Game/' className={styles.project_link}> Карточная игра "Найди баг" </a></li>
-								<li> <a href='https://todo-beige-nine.vercel.app/' className={styles.project_link}> Приложение на React </a></li>
+								<li> <a href='https://vercel.com/sarnadya/todo' className={styles.project_link}> Приложение на React </a></li>
 							</ul>
 				</div>
 

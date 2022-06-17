@@ -1,11 +1,13 @@
 body {
+	min-width: 320px;
 	background-color: #E5E5E5;;
 	padding-top: 10px;
 }
 
 .sidebar {
 	margin: 10px auto;
-	width: 700px;
+	max-width: 700px;
+	width: 95%;
 }
 
 .menu {
@@ -31,4 +33,30 @@ body {
 	box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
 	border-radius: 37px;
 	color: #fff;
+}
+
+@media (max-width: 686px) {
+	.menu {
+		background-size: 65px;
+	}
+}
+
+@media (max-width: 486px) {
+	.menu {
+		background-size: 50px;
+	}
+
+	.link {
+		width: 80px;
+	}
+}
+
+@media (max-width: 350px) {
+	.menu {
+		font-size: 14px;
+	}
+
+	.link {
+		width: 60px;
+	}
 }

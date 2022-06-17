@@ -20,8 +20,7 @@ const ItemList = ({items, filteredItems, onClickDone, deleteItem, onClickEdit, c
           border='1px solid #CCC'
           borderRadius='41px'
           margin={1}
-          height='36px'
-          
+          height='43px'
         >
           <Item
             value={item.value}

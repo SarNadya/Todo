@@ -1,22 +1,60 @@
+.wrap {
+  margin-top: 32px;
+  margin-left: 32px;
+}
+
 .title {
-    font-family: Roboto;
-    font-weight: 700;
-    font-size: 28px;
-  }
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 28px;
+}
 
-  .filterList {
-    display: flex;
-    justify-content: end;
-    align-items: flex-end;
-  }
+.filterList {
+  display: flex;
+  justify-content: end;
+  align-items: flex-end;
+}
   
-  .button {
-    font-family: Roboto;
-    font-weight: 400;
-    font-size: 12px;
+.button {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.button strong {
+  margin: 0 15px 0 4px;
+  color: rgb(92, 92, 243);
+}
+
+@media (max-width: 686px) {
+  .title {
+    text-align: center;
+    margin-bottom: 45px;
+  }
+}
+
+@media (max-width: 486px) {
+	.filterList {
+		justify-content: space-evenly;
+	}
+}
+
+@media (max-width: 420px) {
+  .wrap {
+    margin-left: 0;
   }
 
-  .button strong {
-    margin: 0 3px;
-    color: rgb(92, 92, 243);
+  .title {
+    font-size: 26px;
   }
+}
+
+@media (max-width: 350px) {
+	.title {
+    font-size: 22px;
+  }
+
+  .filterList button {
+		font-size: 11px;
+	}
+}

@@ -1,8 +1,5 @@
 .wrap {
   overflow: auto;
-  height: 432px;
-  /* position: absolute;
-  width: 636px;
-  height: 432px;
-  top: 113px; */
+  height: 390px;
+  margin-bottom: 20px;
 }

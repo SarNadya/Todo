@@ -45,14 +45,10 @@ class InputItem extends React.Component {
 
   render() {
     return (
-      <Box className={styles.wrap}
-        sx={{
-          width: 636
-        }}
-      >
+      <Box className={styles.wrap}>
         <TextField className={styles.input}
           type="text"
-          label="Просто введите сюда название дела..."
+          label="Введите название дела..."
           id="outlined"
           variant="outlined"
           value={this.state.inputValue}
